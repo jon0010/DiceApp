@@ -1,7 +1,8 @@
 import React from "react";
+import "./gameNotLogin.css";
 
 function GameNotLogin() {
-  return <div>GameNotLogin</div>;
+  return <div className="gameNotLogin-styles"></div>;
 }
 
 export default GameNotLogin;

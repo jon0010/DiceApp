@@ -1,0 +1,7 @@
+.gameNotLogin-styles {
+  background-image: url("../assets/gameNotLoginFondo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 100vh;
+}
