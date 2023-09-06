@@ -1,8 +1,13 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
+import LandingPage from "./landingPage/page";
 
-const LandingPage = () => {
-  return <div className="texto fs-2">Pagina principal</div>;
-};
+function page() {
+  return (
+    <div>
+      {" "}
+      <LandingPage />
+    </div>
+  );
+}
 
-export default LandingPage;
+export default page;

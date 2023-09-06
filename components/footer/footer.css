@@ -1,0 +1,89 @@
+footer {
+  height: calc(100% - 30px);
+  min-height: 10em;
+  width: 100%;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  text-align: center;
+}
+.footer-logo {
+  height: 80px;
+  width: 80px;
+  margin: 10px;
+}
+
+.footer-texto {
+  font-size: 1.5rem;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-family: "Quicksand", sans-serif;
+}
+
+.iconos-redes-sociales a {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  margin: 10px;
+  border: 2px solid white;
+  border-radius: 50%;
+  transition: all 0.2s ease-in;
+}
+
+.iconos-redes-sociales i {
+  color: white;
+  font-size: 1.5rem;
+  transition: all 0.2s ease-in;
+}
+
+.iconos-redes-sociales a:hover {
+  background-color: white;
+  border: 2px solid rgb(13, 110, 253);
+}
+
+.iconos-redes-sociales a:hover i {
+  color: black;
+}
+
+.derechos-de-autor {
+  font-size: 15px;
+  color: #aeaeae;
+  padding: 20px;
+}
+
+.seccion-oscura {
+  color: white;
+  background-color: #1b1b22;
+}
+
+.seccion-clara {
+  color: rgb(0, 0, 0);
+  background-color: white;
+}
+
+.seccion-descripcion {
+  font-size: 1.2rem;
+  color: #584e4e;
+}
+
+.seccion-texto {
+  font-size: 1.2rem;
+}
+
+.navbar-footer {
+  justify-self: flex-start;
+  color: #ffffff;
+  justify-self: start;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+.footer-icon {
+  margin-right: 0.1rem;
+}
