@@ -2,10 +2,11 @@ import { Request, Response } from "express";
 import { sequelize } from "../../db";
 import { Op } from "sequelize";
 
-const getAllProductsController = async (_req: Request, res: Response) => {
+const getAllProductsController = async (req: Request, res: Response) => {
   try {
     const products = await sequelize.models.Juego.findAll({
       where: {
+        usuarioId: req.params.usuarioId,
         resultado: {
           [Op.ne]: "borrado",
         },

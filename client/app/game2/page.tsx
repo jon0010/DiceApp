@@ -126,7 +126,7 @@ const DicebotChallenge = () => {
   const registrarResultado = async (resultado: string, userId: string) => {
     try {
       const response = await axios.post(
-        `https://dice-app.onrender.com/juego/${usuarioId}`,
+        `https://diceapp.onrender.com/juego/${usuarioId}`,
         {
           tipoJuego: "desafio",
           resultado: resultado,

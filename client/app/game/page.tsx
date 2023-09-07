@@ -67,7 +67,7 @@ const AdivinaElNumero = () => {
       });
 
       try {
-        await axios.post(`https://dice-app.onrender.com/juego/${usuarioId}`, {
+        await axios.post(`https://diceapp.onrender.com/juego/${usuarioId}`, {
           tipoJuego: "adivina",
           resultado: "gano",
           usuarioId: userId,
@@ -83,7 +83,7 @@ const AdivinaElNumero = () => {
         )}`,
       });
       try {
-        await axios.post(`https://dice-app.onrender.com/juego/${usuarioId}`, {
+        await axios.post(`https://diceapp.onrender.com/juego/${usuarioId}`, {
           tipoJuego: "adivina",
           resultado: "perdio",
           usuarioId: userId,

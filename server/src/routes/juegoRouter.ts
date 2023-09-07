@@ -7,7 +7,7 @@ import {
 
 export const juegoRouter = Router();
 
-juegoRouter.get("/", getAllJuegoHandler);
+juegoRouter.get("/:usuarioId", getAllJuegoHandler);
 juegoRouter.post("/:usuarioId", crearJuego);
 juegoRouter.delete("/:juegoId", borrarJuego);
 
