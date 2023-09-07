@@ -143,7 +143,7 @@ const DicebotChallenge = () => {
   return (
     <div className="center-container">
       <div>
-        <Image src={dicebot2.src} alt="Dicebot" width={10} height={10} />
+        <Image src={dicebot2.src} alt="Dicebot" width={500} height={300} />
         <h1 style={{ borderTop: "solid", width: "18em", marginBottom: "1em" }}>
           Desafío contra Dicebot
         </h1>
