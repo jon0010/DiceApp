@@ -8,6 +8,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { decodeToken } from "react-jwt";
 import Swal from "sweetalert2";
+import Image from "next/image";
 import "./game2.css";
 
 const DicebotChallenge = () => {
@@ -43,23 +44,19 @@ const DicebotChallenge = () => {
     const userRolls = [];
     const cpuRolls = [];
 
-    // Simular tiradas de dados para el usuario y la CPU
     for (let i = 0; i < numDice; i++) {
-      userRolls.push(Math.floor(Math.random() * 6) + 1); // Dado de 6 caras
+      userRolls.push(Math.floor(Math.random() * 6) + 1);
       cpuRolls.push(Math.floor(Math.random() * 6) + 1);
     }
 
-    // Calcular puntajes
     const userTotal = userRolls.reduce((acc, curr) => acc + curr, 0);
     const cpuTotal = cpuRolls.reduce((acc, curr) => acc + curr, 0);
 
-    // Actualizar los estados
     setUserDice(userRolls);
     setCpuDice(cpuRolls);
     setUserScore(userTotal);
     setCpuScore(cpuTotal);
 
-    // Determinar al ganador después de actualizar los estados
     determineWinner(userTotal, cpuTotal);
   };
 
@@ -146,7 +143,7 @@ const DicebotChallenge = () => {
   return (
     <div className="center-container">
       <div>
-        <img src={dicebot2.src} alt="Dicebot" />
+        <Image src={dicebot2.src} alt="Dicebot" />
         <h1 style={{ borderTop: "solid", width: "18em", marginBottom: "1em" }}>
           Desafío contra Dicebot
         </h1>

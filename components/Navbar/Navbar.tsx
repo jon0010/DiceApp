@@ -1,5 +1,6 @@
 import React from "react";
 import dicelogo from "../../app/assets/dicelogo.png";
+import Image from "next/image";
 import "./navbar.css";
 import Link from "next/link";
 
@@ -9,7 +10,11 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg bg-dark text-white">
         <div className="container-fluid">
           <Link className="navbar-brand ms-5" href="/">
-            <img src={dicelogo.src} alt="dicelogo" style={{ width: "7.5em" }} />
+            <Image
+              src={dicelogo.src}
+              alt="dicelogo"
+              style={{ width: "7.5em" }}
+            />
           </Link>
           <button
             className="navbar-toggler"

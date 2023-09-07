@@ -2,6 +2,7 @@ import React from "react";
 import dicelogo from "../../app/assets/dicelogo.png";
 import "./navbar2.css";
 import Link from "next/link";
+import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
@@ -42,7 +43,7 @@ const Navbar2: React.FC<NavBar2Props> = ({
         <nav className="navbar navbar-expand-lg bg-dark text-white">
           <div className="container-fluid">
             <Link className="navbar-brand ms-5" href="/">
-              <img
+              <Image
                 src={dicelogo.src}
                 alt="dicelogo"
                 style={{ width: "7.5em" }}

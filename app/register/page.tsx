@@ -146,7 +146,7 @@ const RegisterPage = () => {
           })}
         />
         {errors.confirmarContraseña && (
-          <p className="text-danger">"Las contraseñas no coinciden"</p>
+          <p className="text-danger">Las contraseñas no coinciden</p>
         )}
         <button type="submit" className="submit mt-5">
           Crea tu cuenta
