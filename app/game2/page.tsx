@@ -126,7 +126,7 @@ const DicebotChallenge = () => {
   const registrarResultado = async (resultado: string, userId: string) => {
     try {
       const response = await axios.post(
-        `http://localhost:3001/juego/${usuarioId}`,
+        `https://dice-app.onrender.com/juego/${usuarioId}`,
         {
           tipoJuego: "desafio",
           resultado: resultado,
@@ -143,7 +143,7 @@ const DicebotChallenge = () => {
   return (
     <div className="center-container">
       <div>
-        <Image src={dicebot2.src} alt="Dicebot" />
+        <Image src={dicebot2.src} alt="Dicebot" style={{ width: "" }} />
         <h1 style={{ borderTop: "solid", width: "18em", marginBottom: "1em" }}>
           Desafío contra Dicebot
         </h1>

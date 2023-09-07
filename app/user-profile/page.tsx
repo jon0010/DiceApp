@@ -46,7 +46,7 @@ const ProfilePage = () => {
     verificarAutenticacion();
 
     axios
-      .get(`http://localhost:3001/juego`)
+      .get(`https://dice-app.onrender.com/juego`)
       .then((response) => {
         setHistorialJuegos(response.data);
       })
@@ -81,7 +81,7 @@ const ProfilePage = () => {
     if (confirmationResult.isConfirmed) {
       try {
         const response = await axios.delete(
-          `http://localhost:3001/juego/${juegoId}`
+          `https://dice-app.onrender.com/juego/${juegoId}`
         );
 
         if (response.status === 200) {
