@@ -2,7 +2,6 @@
 
 import "./globals.css";
 import React, { useEffect, useState } from "react";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.css";
 import "@fontsource/roboto/300.css";

@@ -10,11 +10,9 @@ const dirname = path.dirname(path.resolve());
 
 const app = express();
 
-// settings
 app.set("port", process.env.PORT_NAME ?? 3001);
 app.set("views", path.join(dirname, "views"));
 
-// middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.json());
@@ -43,7 +41,6 @@ app.use((_, res, next) => {
 
 app.use(mainRouter);
 
-// Error catching endware.
 const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   const status = err.status || 500;
   const message = err.message || err;
@@ -53,7 +50,6 @@ const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
 
 app.use(errorHandler);
 
-// static files
 app.use(express.static(path.join(__dirname, "public")));
 
 export default app;

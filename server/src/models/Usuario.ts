@@ -1,4 +1,3 @@
-// Usuario.ts
 import { DataTypes, Model, Sequelize } from "sequelize";
 
 export interface UsuarioAttributes {
