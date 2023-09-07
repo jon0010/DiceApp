@@ -1,0 +1,12 @@
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  line-height: 2em;
+  text-align: center;
+  background-image: url("../assets/perfilcasino.jpg");
+  background-size: cover;
+  background-position: center;
+}

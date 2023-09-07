@@ -1,5 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { decodeToken } from "react-jwt";
 import "./game1.css";
 
 const AdivinaElNumero = () => {
@@ -12,9 +15,32 @@ const AdivinaElNumero = () => {
   };
 
   const [gameState, setGameState] = useState(initialState);
+  const [usuarioId, setUsuarioId] = useState("");
+  console.log(usuarioId);
 
-  const rollDiceAndGuess = () => {
-    // Reiniciar el juego estableciendo los valores iniciales
+  useEffect(() => {
+    const verificarAutenticacion = async () => {
+      const userToken = Cookies.get("token");
+      if (userToken) {
+        try {
+          const decoded = decodeToken(userToken) as {
+            id: string;
+          };
+          console.log({ a: decoded });
+          if (decoded) {
+            const userId = decoded.id;
+            console.log(userId);
+            setUsuarioId(userId);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    verificarAutenticacion();
+  }, []);
+
+  const rollDiceAndGuess = async (userId: string) => {
     setGameState(initialState);
 
     const { numDice, diceValues } = gameState;
@@ -39,6 +65,16 @@ const AdivinaElNumero = () => {
         )}`,
         score: gameState.score + 1,
       });
+
+      try {
+        await axios.post(`http://localhost:3001/juego/${usuarioId}`, {
+          tipoJuego: "adivina",
+          resultado: "gano",
+          usuarioId: userId,
+        });
+      } catch (error) {
+        console.error("Error al crear el juego:", error);
+      }
     } else {
       setGameState({
         ...gameState,
@@ -46,6 +82,15 @@ const AdivinaElNumero = () => {
           ", "
         )}`,
       });
+      try {
+        await axios.post(`http://localhost:3001/juego/${usuarioId}`, {
+          tipoJuego: "adivina",
+          resultado: "perdio",
+          usuarioId: userId,
+        });
+      } catch (error) {
+        console.error("Error al crear el juego:", error);
+      }
     }
   };
 
@@ -166,7 +211,10 @@ const AdivinaElNumero = () => {
         <div className="col-md-8">
           <h1 className="text-center mt-5">Adivina el número</h1>
           <hr />
-          <button className="botondice mb-5 mt-3" onClick={rollDiceAndGuess}>
+          <button
+            className="botondice mb-5 mt-3"
+            onClick={() => rollDiceAndGuess(usuarioId)}
+          >
             Tirar Dados y Adivinar
           </button>
           <div>

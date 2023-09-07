@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dicebot2 from "../assets/dicebot2.png";
 import youwin from "../assets/youwin.png";
 import youlost from "../assets/youlost.png";
-import kingdice from "../assets/kingdice.gif";
 import drawgame from "../assets/drawgame.gif";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { decodeToken } from "react-jwt";
 import Swal from "sweetalert2";
 import "./game2.css";
 
@@ -13,6 +15,29 @@ const DicebotChallenge = () => {
   const [cpuDice, setCpuDice] = useState<number[]>([]);
   const [userScore, setUserScore] = useState<number>(0);
   const [cpuScore, setCpuScore] = useState<number>(0);
+  const [usuarioId, setUsuarioId] = useState("");
+
+  useEffect(() => {
+    const verificarAutenticacion = async () => {
+      const userToken = Cookies.get("token");
+      if (userToken) {
+        try {
+          const decoded = decodeToken(userToken) as {
+            id: string;
+          };
+          console.log({ a: decoded });
+          if (decoded) {
+            const userId = decoded.id;
+            console.log(userId);
+            setUsuarioId(userId);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    verificarAutenticacion();
+  }, []);
 
   const rollDice = (numDice: number) => {
     const userRolls = [];
@@ -56,6 +81,7 @@ const DicebotChallenge = () => {
           setCpuDice([]);
           setUserScore(0);
           setCpuScore(0);
+          registrarResultado("gano", usuarioId);
         }
       });
     } else if (cpuTotal > userTotal) {
@@ -75,6 +101,7 @@ const DicebotChallenge = () => {
           setCpuDice([]);
           setUserScore(0);
           setCpuScore(0);
+          registrarResultado("perdio", usuarioId);
         }
       });
     } else {
@@ -93,8 +120,26 @@ const DicebotChallenge = () => {
           setCpuDice([]);
           setUserScore(0);
           setCpuScore(0);
+          registrarResultado("empato", usuarioId);
         }
       });
+    }
+  };
+
+  const registrarResultado = async (resultado: string, userId: string) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/juego/${usuarioId}`,
+        {
+          tipoJuego: "desafio",
+          resultado: resultado,
+          usuarioId: userId,
+        }
+      );
+
+      console.log("Resultado registrado:", response.data);
+    } catch (error) {
+      console.error("Error al registrar el resultado:", error);
     }
   };
 
