@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FaFacebook, FaYoutube } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { BiLogoGmail } from "react-icons/bi";
-import "./Footer.css";
+import "./footer.css";
 
 const Footer: React.FC = () => {
   return (
