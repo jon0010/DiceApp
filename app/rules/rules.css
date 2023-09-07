@@ -1,12 +1,23 @@
-.casinoRules {
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  line-height: 4em;
   text-align: center;
+  background-image: url("../assets/fondoReglas.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .gameRules {
-  margin-top: 20px;
+  margin-top: 0em;
+}
+
+.center-container {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }

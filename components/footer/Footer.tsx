@@ -1,5 +1,8 @@
 import React from "react";
 import Link from "next/link";
+import { FaFacebook, FaYoutube } from "react-icons/fa";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { BiLogoGmail } from "react-icons/bi";
 import "./Footer.css";
 
 const Footer: React.FC = () => {
@@ -15,20 +18,28 @@ const Footer: React.FC = () => {
         </p>
         <div className="iconos-redes-sociales d-flex flex-wrap align-items-center justify-content-center">
           <a href="" target="_blank" rel="noopener noreferrer">
-            <i className="bi bi-facebook"></i>
+            <i>
+              <FaFacebook />
+            </i>
           </a>
           <a href="" target="_blank" rel="noopener noreferrer">
-            <i className="bi bi-youtube"></i>
+            <i>
+              <FaYoutube />
+            </i>
           </a>
           <a
-            href="mailto:alanabelpereyra322@gmail.com"
+            href="mailto:jonnahuel78@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i className="bi bi-envelope-at-fill"></i>
+            <i>
+              <BiLogoGmail />
+            </i>
           </a>
           <a href="" target="_blank" rel="noopener noreferrer">
-            <i className="bi bi-instagram"></i>
+            <i>
+              <FaSquareInstagram />
+            </i>
           </a>
         </div>
         <div className="derechos-de-autor">

@@ -1,40 +1,66 @@
 "use client";
 import React, { useState } from "react";
+import "./game1.css";
 
 const AdivinaElNumero = () => {
-  const [numDice, setNumDice] = useState(1);
-  const [result, setResult] = useState("");
-  const [score, setScore] = useState(0);
-  const [diceValues, setDiceValues] = useState(Array(9).fill(""));
-  const [probability, setProbability] = useState<number | null>(null);
+  const initialState = {
+    numDice: 1,
+    result: "",
+    score: 0,
+    diceValues: Array(9).fill(""),
+    probability: 0,
+  };
+
+  const [gameState, setGameState] = useState(initialState);
 
   const rollDiceAndGuess = () => {
-    const diceResults: number[] = [];
+    // Reiniciar el juego estableciendo los valores iniciales
+    setGameState(initialState);
+
+    const { numDice, diceValues } = gameState;
+
+    const diceResults = [];
     for (let i = 0; i < numDice; i++) {
       const randomValue = Math.floor(Math.random() * 6) + 1;
       diceResults.push(randomValue);
     }
 
     const desiredValues = diceValues.map((value) => parseInt(value));
-    const isCorrectGuess = desiredValues.every((value) =>
-      diceResults.includes(value)
+
+    const isCorrectGuess = diceResults.every((value) =>
+      desiredValues.includes(value)
     );
 
     if (isCorrectGuess) {
-      setResult("¡Correcto! Ganaste.");
-      setScore(score + 1);
+      setGameState({
+        ...gameState,
+        result: `¡Le pegaste! Los números que salieron son: ${diceResults.join(
+          ", "
+        )}`,
+        score: gameState.score + 1,
+      });
     } else {
-      setResult("Incorrecto. Inténtalo de nuevo.");
+      setGameState({
+        ...gameState,
+        result: `Incorrecto. Inténtalo de nuevo. Los números que salieron son: ${diceResults.join(
+          ", "
+        )}`,
+      });
     }
   };
 
   const calculateProbability = () => {
+    const { numDice, diceValues } = gameState;
+
     const valuesEntered = diceValues
       .map((value) => parseInt(value))
       .filter((value) => !isNaN(value));
 
     if (valuesEntered.length === 0) {
-      setProbability(0);
+      setGameState({
+        ...gameState,
+        probability: 0,
+      });
       return;
     }
 
@@ -59,50 +85,95 @@ const AdivinaElNumero = () => {
     calculateOutcomes(0, 0);
 
     const calculatedProbability = (favorableOutcomes / totalOutcomes) * 100;
-    setProbability(parseFloat(calculatedProbability.toFixed(2)));
+    setGameState({
+      ...gameState,
+      probability: parseFloat(calculatedProbability.toFixed(2)),
+    });
   };
 
   return (
-    <div>
-      <h1>Adivina el número</h1>
-      <div>
-        <label>Cantidad de Dados:</label>
-        <select onChange={(e) => setNumDice(parseInt(e.target.value))}>
-          {Array.from({ length: 9 }, (_, i) => (
-            <option key={i} value={i + 1}>
-              {i + 1}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <label>Valores deseados:</label>
-        {Array.from({ length: numDice }, (_, i) => (
-          <input
-            key={i}
-            type="number"
-            value={diceValues[i]}
-            onChange={(e) => {
-              const newValues = [...diceValues];
-              newValues[i] = e.target.value;
-              setDiceValues(newValues);
-            }}
-          />
-        ))}
-      </div>
-      <button onClick={rollDiceAndGuess}>Tirar Dados y Adivinar</button>
-      <div>
-        <h2>Resultado: {result}</h2>
-        <h2>Puntaje: {score}</h2>
-      </div>
-      <div>
-        <h2>Visor de Probabilidades</h2>
-        <button onClick={calculateProbability}>Calcular Probabilidad</button>
-        {probability !== null && (
+    <div className="center-container">
+      <div className="row">
+        <div className="col-md-4">
+          <h2>Visor de Probabilidades</h2>
           <div>
-            <h2>Probabilidad: {probability}%</h2>
+            <label className="mt-2">Cantidad de Dados:</label>
+            <select
+              onChange={(e) =>
+                setGameState({
+                  ...gameState,
+                  numDice: parseInt(e.target.value),
+                })
+              }
+            >
+              {Array.from({ length: 9 }, (_, i) => (
+                <option key={i} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
           </div>
-        )}
+          <div>
+            <label className="mt-5">Valores deseados:</label>
+            <br />
+            {Array.from({ length: gameState.numDice }, (_, i) => (
+              <input
+                className="text-center fs-3 mt-2"
+                style={{
+                  width: "2em",
+                  backgroundColor: "black",
+                  color: "white",
+                  borderRadius: "10px",
+                }}
+                key={i}
+                type="number"
+                value={gameState.diceValues[i]}
+                onChange={(e) => {
+                  const newValue = e.target.value;
+                  if (/^[1-6]$/.test(newValue) || newValue === "") {
+                    const newValues = [...gameState.diceValues];
+                    newValues[i] = newValue;
+                    setGameState({ ...gameState, diceValues: newValues });
+                  }
+                }}
+              />
+            ))}
+          </div>
+          <button
+            className="mt-5 mb-5 botondice"
+            onClick={calculateProbability}
+          >
+            Calcular Probabilidad
+          </button>
+          {gameState.probability !== null && (
+            <div>
+              <h2
+                style={{
+                  border: "solid",
+                  width: "10em",
+                  padding: "13px",
+                  borderRadius: "10px",
+                  backgroundColor: "black",
+                  opacity: "0.7",
+                  marginLeft: "2.5em",
+                }}
+              >
+                Probabilidad: {gameState.probability}%
+              </h2>
+            </div>
+          )}
+        </div>
+        <div className="col-md-8">
+          <h1 className="text-center mt-5">Adivina el número</h1>
+          <hr />
+          <button className="botondice mb-5 mt-3" onClick={rollDiceAndGuess}>
+            Tirar Dados y Adivinar
+          </button>
+          <div>
+            <h2>{gameState.result}</h2>
+            <h2>Puntaje: {gameState.score}</h2>
+          </div>
+        </div>
       </div>
     </div>
   );

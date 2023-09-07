@@ -1,0 +1,58 @@
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+  background-image: url("../assets/fondoReglas.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 2em;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  padding: 2em;
+  height: 100%;
+}
+
+.col-md-3 {
+  flex: 1;
+  border-right: 1px solid white;
+  padding-right: 4em;
+}
+
+.col-md-9 {
+  flex: 1;
+  padding-left: 3em;
+}
+
+.botondice {
+  position: relative;
+  padding: 0.5em 1.2em;
+  font-size: 1.8em;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: #5b04bf;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  align-items: center;
+  box-shadow: inset 0px 38px 25px 0 #5b04bf, inset 0 0px 0px 0px #084748a8,
+    inset 0 69px 0px 0px #d74589af;
+  border-radius: 0.6em;
+}
+
+.botondice:hover {
+  transition: 0.4s ease-in-out;
+  box-shadow: inset 0px 38px 25px 5px #5b04bf,
+    inset 10px 40px 10px 0px #084748a8, inset 0 69px 0px 0px #31b0d7de;
+}
+
+.botondice:active {
+  box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.3);
+  transform: translate(0.1em, 0.1em);
+}

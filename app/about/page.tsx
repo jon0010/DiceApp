@@ -130,7 +130,7 @@ const AboutPage = () => {
       <div className="col-md-12 col-sm-5">
         <h2 className="tituloproy2 my-4">
           La plataforma cuenta con dos juegos. Ante cualquier comportamiento no
-          deseado,
+          deseado o error,
           <br /> envía un E-mail al desarrollador a{" "}
           <a
             style={{
