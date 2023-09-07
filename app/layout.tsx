@@ -18,11 +18,6 @@ import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Dice App",
-  description: "Good luck",
-};
-
 export default function RootLayout({
   children,
 }: {
