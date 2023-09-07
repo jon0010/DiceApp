@@ -11,6 +11,7 @@ const getAllProductsController = async (req: Request, res: Response) => {
           [Op.ne]: "borrado",
         },
       },
+      order: [["createdAt", "DESC"]],
     });
     return res.json(products);
   } catch (error) {

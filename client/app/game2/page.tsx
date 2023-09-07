@@ -117,7 +117,7 @@ const DicebotChallenge = () => {
           setCpuDice([]);
           setUserScore(0);
           setCpuScore(0);
-          registrarResultado("empato", usuarioId);
+          registrarResultado("empate", usuarioId);
         }
       });
     }
