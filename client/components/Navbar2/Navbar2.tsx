@@ -43,11 +43,7 @@ const Navbar2: React.FC<NavBar2Props> = ({
         <nav className="navbar navbar-expand-lg bg-dark text-white">
           <div className="container-fluid">
             <Link className="navbar-brand ms-5" href="/">
-              <Image
-                src={dicelogo.src}
-                alt="dicelogo"
-                style={{ width: "7.5em" }}
-              />
+              <Image src={dicelogo.src} alt="dicelogo" width={10} height={10} />
             </Link>
             <button
               className="navbar-toggler"
