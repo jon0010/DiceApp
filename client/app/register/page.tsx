@@ -18,7 +18,7 @@ const RegisterPage = () => {
   const submit = async (data: FieldValues) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/register",
+        "https://diceapp.onrender.com/api/register",
         data
       );
       Swal.fire({

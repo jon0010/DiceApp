@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -50,7 +50,7 @@ const LoginPage = () => {
   const iniciarSesion = async (data: FieldValues) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/login",
+        "https://diceapp.onrender.com/api/login",
         data
       );
       const token = response.data.token;
