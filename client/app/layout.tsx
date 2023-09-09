@@ -2,7 +2,6 @@
 
 import "./globals.css";
 import React, { useEffect, useState } from "react";
-import { Inter } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -14,8 +13,6 @@ import Cookies from "js-cookie";
 import { decodeToken } from "react-jwt";
 import Navbar2 from "@/components/Navbar2/Navbar2";
 import { useRouter } from "next/navigation";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -50,8 +47,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/app/dice.ico" />
+        <link
+          rel="preload"
+          href="https://dice-app-nu.vercel.app/_next/static/css/077a8c9a87d2c245.css"
+          as="style"
+        />
       </head>
-      <body className={inter.className}>
+      <body>
         <div>
           {isLoggedIn ? (
             <Navbar2
