@@ -46,7 +46,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/app/dice.ico" />
         <link
           rel="preload"
           href="https://dice-4x7rkmb3c-jon0010.vercel.app/_next/static/css/077a8c9a87d2c245.css"
